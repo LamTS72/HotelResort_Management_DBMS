@@ -1,0 +1,60 @@
+--27--
+DROP TABLE IF EXISTS TypeForDiscount;
+--26--
+DROP TABLE IF EXISTS TimelineShop;
+--25--
+DROP TABLE IF EXISTS ShopPicture;
+--24--
+DROP TABLE IF EXISTS AreaPlace;
+--23--
+DROP TABLE IF EXISTS BrandSouvenir;
+--22--
+DROP TABLE IF EXISTS TypeSouvenir;
+--21--
+DROP TABLE IF EXISTS ServiceSpa;
+--20--
+DROP TABLE IF EXISTS Service;
+--19--
+DROP TABLE IF EXISTS Company;
+--18--
+DROP TABLE IF EXISTS PaymentBill;
+--17--
+DROP TABLE IF EXISTS RentingRoom;
+--16--
+DROP TABLE IF EXISTS BillBooking;
+--15--
+DROP TABLE IF EXISTS BillService;
+--14--
+DROP TABLE IF EXISTS ServicePackage;
+--13--
+DROP TABLE IF EXISTS Customer;
+--12--
+DROP TABLE IF EXISTS ProviderMaterial;
+--11--
+DROP TABLE IF EXISTS Provider;
+--10--
+DROP TABLE IF EXISTS Material;
+--9--
+DROP TABLE IF EXISTS SpicTypeInRoomType;
+--8--
+DROP TABLE IF EXISTS SpicimenType;
+--7--
+DROP TABLE IF EXISTS Room;
+--6--
+DROP TABLE IF EXISTS BranchHavRoomType;
+--5--
+DROP TABLE IF EXISTS BedInfo;
+--4--
+DROP TABLE IF EXISTS RoomType;
+--3--
+DROP TABLE IF EXISTS Zone;
+--2--
+DROP TABLE IF EXISTS BranchPicture;
+--1--
+DROP TABLE IF EXISTS Branch;
+--DROP SEQUENCE IF EXISTS numb_id;
+DROP SEQUENCE IF EXISTS number_id;
+DROP FUNCTION IF EXISTS PackageInfo;
+DROP FUNCTION IF EXISTS StatisticGuests;
+DROP FUNCTION IF EXISTS BillBookingInfo;
+DROP TABLE IF EXISTS login_users;

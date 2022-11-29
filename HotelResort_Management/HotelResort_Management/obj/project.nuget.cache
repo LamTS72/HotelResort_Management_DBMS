@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "/Co9DPs29rI3aeJ9SzH5N3ApZLH8mnLVZTbiw751e/QPfBal5wPOm+thrg5iyQvs74CWgHKEzj7Yr3b2lpJk8Q==",
+  "success": true,
+  "projectFilePath": "D:\\DBMS\\HotelResort_Management\\HotelResort_Management\\HotelResort_Management.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Windows\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Windows\\.nuget\\packages\\npgsql\\7.0.0\\npgsql.7.0.0.nupkg.sha512",
+    "C:\\Users\\Windows\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\Windows\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\Windows\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
