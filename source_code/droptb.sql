@@ -1,5 +1,4 @@
 --27--
-DROP TABLE IF EXISTS TypeForDiscount;
 --26--
 DROP TABLE IF EXISTS TimelineShop;
 --25--
@@ -24,6 +23,7 @@ DROP TABLE IF EXISTS RentingRoom;
 DROP TABLE IF EXISTS BillBooking;
 --15--
 DROP TABLE IF EXISTS BillService;
+DROP TABLE IF EXISTS TypeForDiscount;
 --14--
 DROP TABLE IF EXISTS ServicePackage;
 --13--
@@ -52,8 +52,7 @@ DROP TABLE IF EXISTS Zone;
 DROP TABLE IF EXISTS BranchPicture;
 --1--
 DROP TABLE IF EXISTS Branch;
---DROP SEQUENCE IF EXISTS numb_id;
-DROP SEQUENCE IF EXISTS number_id;
+
 DROP FUNCTION IF EXISTS PackageInfo;
 DROP FUNCTION IF EXISTS StatisticGuests;
 DROP FUNCTION IF EXISTS BillBookingInfo;

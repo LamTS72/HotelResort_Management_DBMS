@@ -59,7 +59,7 @@ BEGIN
 	UPDATE Customer
 	SET points = Customer.points + (SELECT bill_price FROM BillBooking JOIN Customer ON
 								  	BillBooking.customer_id = Customer.customer_id
-								   WHERE NEW.bill_status = 1 AND NEW.booking_id = BillBooking.booking_id LIMIT 1)
+								   WHERE NEW.bill_status = 1 AND NEW.booking_id = BillBooking.booking_id LIMIT 1)/1000
 	FROM BillBooking
 	WHERE NEW.customer_id = Customer.customer_id AND NEW.booking_id = BillBooking.booking_id AND NEW.bill_status = 1;
 	RETURN NULL;

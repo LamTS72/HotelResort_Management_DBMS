@@ -1,7 +1,7 @@
 --1--
-CREATE SEQUENCE number_id START 1;
 CREATE TABLE Branch(
-	branch_id TEXT DEFAULT 'CN' || nextval('number_id'),
+	number_id SERIAL NOT NULL,
+	branch_id TEXT GENERATED ALWAYS AS ('CN' || number_id::text) STORED,
 	province TEXT,
 	address TEXT,
 	phone_num VARCHAR(12),

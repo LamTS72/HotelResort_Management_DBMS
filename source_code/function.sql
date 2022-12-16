@@ -10,37 +10,39 @@ $$
 	SELECT _datetime + _days;
 $$ LANGUAGE sql IMMUTABLE;
 
-CREATE OR REPLACE FUNCTION PackageInfo(_customer_id TEXT)
-	RETURNS TABLE(
+CREATE TYPE mytype AS(
 		package_name TEXT,
 		num_guests INT,
 		time_starting DATE,
 		time_expiring DATE,
 		remaining_days INT
-	)
+);
+CREATE OR REPLACE FUNCTION PackageInfo(_customer_id TEXT)
+	RETURNS mytype
 AS
 $$
+DECLARE tableshow mytype;
+DECLARE tempvar INT;
+DECLARE tempvar1 DATE;
+DECLARE tempvar2 DATE;
 BEGIN
-	RETURN QUERY 
-	SELECT
-		ServicePackage.package_name,
-		ServicePackage.num_guests,
-		BillService.time_starting,
-		(BillService.time_starting+365),
-		(CASE WHEN(AddDate(365,BillService.time_starting) - CURRENT_DATE -
-		   AddDateInt(ServicePackage.num_days ,- (BillBooking.time_checkout - BillBooking.time_checkin))) > 0 THEN
-		    AddDateInt(ServicePackage.num_days, - (BillBooking.time_checkout - BillBooking.time_checkin)) 
+		tableshow.package_name = BillService.package_name FROM BillService WHERE BillService.customer_id = _customer_id;
+		tableshow.num_guests = ServicePackage.num_guests FROM ServicePackage WHERE ServicePackage.package_name = tableshow.package_name;
+		tableshow.time_starting = BillService.time_starting FROM BillService WHERE BillService.customer_id = _customer_id ;
+		tableshow.time_expiring = (tableshow.time_starting+365);
+		tempvar= ServicePackage.num_days FROM ServicePackage WHERE ServicePackage.package_name = tableshow.package_name;
+		tempvar1 = BillBooking.time_checkout FROM BillBooking WHERE BillBooking.customer_id = _customer_id;
+		tempvar2 = BillBooking.time_checkin FROM BillBooking WHERE BillBooking.customer_id = _customer_id;
+		IF(AddDate(365,tableshow.time_starting) - CURRENT_DATE -
+		   AddDateInt(tempvar ,- (tempvar1 - tempvar2))) > 0 THEN
+		   tableshow.remaining_days = AddDateInt(tempvar, - (tempvar1 - tempvar2)) ;
 		ELSE
-			AddDate(365,BillService.time_starting) - CURRENT_DATE
-		END)
-	FROM
-		ServicePackage JOIN BillService ON ServicePackage.package_name = BillService.package_name
-		JOIN BillBooking ON ServicePackage.package_name = BillBooking.package_name
-	WHERE
-		BillBooking.customer_id = _customer_id;
+			tableshow.remaining_days = AddDate(365,tableshow.time_starting) - CURRENT_DATE ;
+		END IF;
+		RETURN tableshow;
 END;
 $$ LANGUAGE 'plpgsql';
-
+SELECT *FROM PackageInfo('KH000001');
 --SELECT * FROM PackageInfo('KH000001');
 --SELECT * FROM PackageInfo('KH000002');
 --DROP FUNCTION IF EXISTS PackageInfo;
